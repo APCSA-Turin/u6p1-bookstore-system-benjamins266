@@ -1,16 +1,29 @@
 package com.example.project;
 
-public class IdGenerate{ //This class contains statics variable and methods, you do not initalize an object to use it.
+public class IdGenerate{ 
     
-    // //requires 1 private attribute String currentId. You must initialize it to 99
+    //static string attribute initialized to 99, keeps track of the current Id number
+    private static String currentId = "99";
 
-    // //requires one empty constructor
+    //empty constructor
+    public IdGenerate(){ }
 
+    // returns the static variable currentId
+    public static String getCurrentId(){
+        return currentId;
+    }
 
-    // public  getCurrentId(){}
+    //resets the static variable currentId back to 99
+    public static void reset(){
+        currentId = "99";
+    }
 
-    // public  reset(){} //must reset the currentId back to 99
-
-
-    // public generateID(){} //generates a new id, when called it will increment the currentId by 1.. Hint pay attention to data type of currentId
+    /*creates a new Id
+      increases the currentId by 1 each time an Id is created*/
+    public static void generateID(){
+        //converts the String currentId into an integer 
+        int newValue = Integer.valueOf(currentId) +1; // Found the valueOf line from https://stackoverflow.com/questions/5585779/how-do-i-convert-a-string-to-an-int-in-java
+        //and back to a string
+        currentId = "" + newValue;
+    }
 }
