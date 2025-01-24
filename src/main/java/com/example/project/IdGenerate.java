@@ -20,10 +20,11 @@ public class IdGenerate{
 
     /*creates a new Id
       increases the currentId by 1 each time an Id is created*/
-    public static void generateID(){
+    public static String generateID(){
         //converts the String currentId into an integer 
         int newValue = Integer.valueOf(currentId) +1; // Found the valueOf line from https://stackoverflow.com/questions/5585779/how-do-i-convert-a-string-to-an-int-in-java
         //and back to a string
         currentId = "" + newValue;
+        return currentId;
     }
 }
