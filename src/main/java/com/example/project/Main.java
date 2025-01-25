@@ -163,13 +163,14 @@ public class Main {
                             break;
                         }
                     }
-                    //If the correct user if found
+                    //If the correct user is found
                     //It will iterate through the all of the books
                     //to identify the book with the same ISBN as the book provided
                     if(findUser!=null){   
-                        for(Book books: store.getBooks()){
-                            if(books != null && books.getIsbn().equals(bookISBN)){
-                                returnBook = books;
+                        for(int i = 0; i<findUser.getBooks().length; i++){
+                            if(findUser.getBooks()[i] != null && findUser.getBooks()[i].getIsbn().equals(bookISBN)){
+                                returnBook = findUser.getBooks()[i];
+                                findUser.getBooks()[i] = null;
                                 break;
                             }
                         }
@@ -224,7 +225,8 @@ public class Main {
                         if(checkOutBook!=null){  
                             for(int i = 0; i<findUser.getBooks().length; i++){
                                 if(findUser.getBooks()[i]==null){
-                                    findUser.getBooks()[i] = checkOutBook;
+                                    Book tempBook = new Book(checkOutBook.getTitle(),checkOutBook.getAuthor(),checkOutBook.getYearPublished(),checkOutBook.getIsbn(),1);
+                                    findUser.getBooks()[i] = tempBook;
                                     checkOutBook.setQuantity(checkOutBook.getQuantity()-1);
                                     System.out.println("Book Checked Out");
                                     break;
